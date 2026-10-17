@@ -16,6 +16,7 @@
       <h1>Items</h1>
       <div class="header-actions">
         <button class="btn btn-primary" onclick="openModal()">Add Item</button>
+        <button class="btn btn-danger-outline" onclick="triggerError()" style="margin-left:8px">Test Error</button>
       </div>
     </div>
     <div class="filters">
@@ -46,8 +47,9 @@
 
 <div class="modal-overlay" id="modal">
   <div class="modal">
-    <h2>Add Item</h2>
-    <div class="form-group"><label>Name</label><input id="itemName" type="text"></div>
+    <h2 id="modalTitle">Add Item</h2>
+    <input type="hidden" id="editItemId">
+    <div class="form-group"><label>Name</label><input id="itemName" type="text" placeholder="Item name"></div>
     <div class="form-group"><label>Category</label>
       <select id="itemCategory">
         <option value="electronics">Electronics</option>
@@ -57,10 +59,23 @@
         <option value="sports">Sports</option>
       </select>
     </div>
-    <div class="form-group"><label>Price</label><input id="itemPrice" type="number" step="0.01"></div>
+    <div class="form-group"><label>Price</label><input id="itemPrice" type="number" step="0.01" placeholder="0.00"></div>
+    <div class="form-group"><label>Stock</label><input id="itemStock" type="number" placeholder="0"></div>
     <div class="modal-actions">
       <button class="btn" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="createItem()">Create</button>
+      <button class="btn btn-primary" id="modalSubmit" onclick="createItem()">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal">
+    <h2>Delete Item</h2>
+    <input type="hidden" id="deleteItemId">
+    <p>Are you sure you want to delete this item?</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeDeleteModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
     </div>
   </div>
 </div>

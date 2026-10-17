@@ -124,3 +124,13 @@ tr:hover td { background: var(--surface2); }
   .main { padding: 16px; }
   .stats { grid-template-columns: 1fr 1fr; }
 }
+
+.btn-danger-outline {
+  background: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+.btn-danger-outline:hover {
+  background: #e74c3c;
+  color: white;
+}
