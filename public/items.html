@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vantage Commerce - Items</title>
+<link rel="stylesheet" href="/css/main.css">
+</head><body>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-logo">Vantage</div>
+    <a href="/">Dashboard</a>
+    <a href="/items" class="active">Items</a>
+    <a href="/analytics">Analytics</a>
+  </nav>
+  <main class="main">
+    <div class="header">
+      <h1>Items</h1>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="openModal()">Add Item</button>
+      </div>
+    </div>
+    <div class="filters">
+      <select id="categoryFilter" onchange="loadItems()">
+        <option value="">All Categories</option>
+        <option value="electronics">Electronics</option>
+        <option value="furniture">Furniture</option>
+        <option value="clothing">Clothing</option>
+        <option value="books">Books</option>
+        <option value="sports">Sports</option>
+      </select>
+      <select id="sortSelect" onchange="loadItems()">
+        <option value="">Default Sort</option>
+        <option value="price_asc">Price: Low to High</option>
+        <option value="price_desc">Price: High to Low</option>
+        <option value="rating">Highest Rated</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Actions</th></tr></thead>
+        <tbody id="itemsBody"></tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2>Add Item</h2>
+    <div class="form-group"><label>Name</label><input id="itemName" type="text"></div>
+    <div class="form-group"><label>Category</label>
+      <select id="itemCategory">
+        <option value="electronics">Electronics</option>
+        <option value="furniture">Furniture</option>
+        <option value="clothing">Clothing</option>
+        <option value="books">Books</option>
+        <option value="sports">Sports</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Price</label><input id="itemPrice" type="number" step="0.01"></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="createItem()">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/js/api.js"></script>
+<script src="/js/items.js"></script>
+</body></html>
