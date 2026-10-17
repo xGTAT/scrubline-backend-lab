@@ -30,7 +30,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const deleted = db.deleteItem(req.params.id);
   if (!deleted) return res.status(404).json({ error: 'Item not found' });
-  res.status(204).end();
+  res.status(200).json({ deleted: true, id: req.params.id });
 });
 
 module.exports = router;
